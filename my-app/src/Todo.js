@@ -11,6 +11,7 @@ export default class Todo extends Component {
             list: [],
         }
         this.addTodo = this.addTodo.bind(this)
+        this.removeTodo = this.removeTodo.bind(this)
     }
     addTodo(todo) {
         this.setState({ list: [...this.state.list, todo], value: '' })
@@ -26,10 +27,10 @@ export default class Todo extends Component {
     return (
       <div>
         <Todoform 
-            submit={this.addTodo}
+            add={this.addTodo}
         />
         <Todolist
-            todos = {this.state.list}  delete = {this.removeTodo}   edit = {this.editTodo}
+            todos = {this.state.list}   delete = {this.removeTodo}   edit = {this.editTodo}
         />
       </div>
     )

@@ -3,15 +3,16 @@ import { Button, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default class Todoform extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
-      task : ""
+      value : ""
     }
+    this.handlesubmit = this.handlesubmit.bind(this)
   }
   handlesubmit(e){
     e.preventDefault();
-    this.props.submit(this.state.task)
+    this.props.add(this.state.value)
   }
   render() {
     return (
@@ -19,7 +20,7 @@ export default class Todoform extends Component {
         <Form onSubmit={this.handlesubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>TodoList</Form.Label>
-            <Form.Control type="text" placeholder="Enter Todo" onChange={(e) => this.setState({task:e.target.value})}/>
+            <Form.Control type="text" placeholder="Enter Todo"  onChange={(e) => this.setState({ value: e.target.value })}/>
             </Form.Group>
             <Button variant="primary" type="submit">
                 Add
