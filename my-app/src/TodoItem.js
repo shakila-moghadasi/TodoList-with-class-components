@@ -3,13 +3,24 @@ import React, { Component } from 'react'
 export default class TodoItem extends Component {
     constructor(){
         super();
+        this.handledelete = this.handledelete.bind(this)
+        this.handleedit = this.handleedit.bind(this)
+    }
+    handledelete(e){
+      e.preventDefault();
+      this.props.delete(this.props.text)
+    }
+    handleedit(e){
+      e.preventDefault();
+      this.props.edit(this.props.text)
     }
   render() {
     return (
       <div className='container'>
-          <li key={this.props.key} value={this.props.value}>{this.props.text}</li>
-          <button onClick={this.props.delete}>delete</button>
-          <button onClick={this.props.edit}>Edit</button>
+          <li value={this.props.value}>{this.props.text}
+          <button onClick={this.handledelete}>delete</button>
+          <button onClick={this.handleedit}>Edit</button>
+          </li>
       </div>
     )
   }
