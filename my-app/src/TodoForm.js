@@ -9,18 +9,25 @@ export default class Todoform extends Component {
       value : ""
     }
     this.handlesubmit = this.handlesubmit.bind(this)
+    this.handleedit = this.handleedit.bind(this)
   }
   handlesubmit(e){
     e.preventDefault();
     this.props.add(this.state.value)
   }
+  handleedit(e){
+    e.preventDefault();
+    this.props.edit(this.state.value)
+  }
   render() {
     return (
       <div className='container'>
         <Form onSubmit={this.handlesubmit}>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Group className="mb-3">
             <Form.Label>TodoList</Form.Label>
-            <Form.Control type="text" placeholder="Enter Todo"  onChange={(e) => this.setState({ value: e.target.value })}/>
+            <Form.Control placeholder="Enter Todo"  
+              onChange={(e) => this.setState({ value: e.target.value })}
+            />
             </Form.Group>
             <Button variant="primary" type="submit">
                 Add

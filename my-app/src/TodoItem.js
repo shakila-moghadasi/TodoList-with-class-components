@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 export default class TodoItem extends Component {
     constructor(){
         super();
+        this.state = {
+          value : ""
+        }
         this.handledelete = this.handledelete.bind(this)
         this.handleedit = this.handleedit.bind(this)
     }

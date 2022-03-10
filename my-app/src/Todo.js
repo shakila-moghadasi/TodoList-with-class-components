@@ -20,14 +20,18 @@ export default class Todo extends Component {
       let list = this.state.list.filter(l => l !== todo);
       this.setState({ list: list })
     }
-    editTodo(){
-        
+    editTodo(todo){
+      let list = this.state.list.filter(l => l !== todo);
+      this.setState({ list: list })
+      this.setState({
+        list: [...this.state.list, todo], value: ''
+      })
     }
   render() {
     return (
       <div>
         <Todoform 
-            add={this.addTodo}
+            add={this.addTodo}   edit = {this.editTodo}
         />
         <Todolist
             todos = {this.state.list}   delete = {this.removeTodo}   edit = {this.editTodo}
