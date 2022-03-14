@@ -1,10 +1,13 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Button } from 'react-bootstrap';
+import { FcEmptyTrash , FcProcess } from 'react-icons/fc';
 
 export default class TodoItem extends Component {
     constructor(){
         super();
         this.state = {
-          value : ""
+          value : "",
+          disable : true
         }
         this.handledelete = this.handledelete.bind(this)
         this.handleedit = this.handleedit.bind(this)
@@ -15,15 +18,23 @@ export default class TodoItem extends Component {
     }
     handleedit(e){
       e.preventDefault();
-      this.props.edit(this.props.text)
+      this.setState({
+        disable : true,
+      })
+      if(this.state.disable){
+        this.setState({disable:false})
+      }
+      else{
+        this.setState({disable:true})
+        this.props.edit(this.state.key , this.state.text)
+      }
     }
   render() {
     return (
-      <div className='container'>
-          <li value={this.props.value}>{this.props.text}
-          <button onClick={this.handledelete}>delete</button>
-          <button onClick={this.handleedit}>Edit</button>
-          </li>
+      <div className='container row mt-5'>
+          <li className='col-10 border border-primary bg-info' value={this.props.value}>{this.props.text}</li>
+          <Button className='col-1' variant="danger" onClick={this.handledelete}><FcEmptyTrash/></Button>
+          <Button className='col-1' variant="secondary" onClick={this.handleedit}><FcProcess/></Button>
       </div>
     )
   }

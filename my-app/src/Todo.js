@@ -3,6 +3,7 @@ import Todolist from './TodoList';
 import Todoform from './TodoForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
 export default class Todo extends Component {
     constructor(props){
         super(props);
@@ -12,6 +13,7 @@ export default class Todo extends Component {
         }
         this.addTodo = this.addTodo.bind(this)
         this.removeTodo = this.removeTodo.bind(this)
+        this.editTodo = this.editTodo.bind(this)
     }
     addTodo(todo) {
         this.setState({ list: [...this.state.list, todo], value: '' })
@@ -20,16 +22,14 @@ export default class Todo extends Component {
       let list = this.state.list.filter(l => l !== todo);
       this.setState({ list: list })
     }
-    editTodo(todo){
-      let list = this.state.list.filter(l => l !== todo);
-      this.setState({ list: list })
-      this.setState({
-        list: [...this.state.list, todo], value: ''
-      })
+    editTodo(id , value){
+      let newTodo = this.state.list
+      newTodo[id] = value
+      this.setState({list: newTodo})
     }
   render() {
     return (
-      <div>
+      <div className='container'>
         <Todoform 
             add={this.addTodo}   edit = {this.editTodo}
         />

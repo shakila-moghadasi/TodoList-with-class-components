@@ -1,0 +1,7 @@
+.App {
+  text-align: center;
+}
+@font-face {
+  font-family: 'rebeca';
+  src: local('rebeca'), url(./fonts/rebeca/Rebeca.ttf), format('truetype') ;
+}

@@ -9,15 +9,10 @@ export default class Todoform extends Component {
       value : ""
     }
     this.handlesubmit = this.handlesubmit.bind(this)
-    this.handleedit = this.handleedit.bind(this)
   }
   handlesubmit(e){
     e.preventDefault();
     this.props.add(this.state.value)
-  }
-  handleedit(e){
-    e.preventDefault();
-    this.props.edit(this.state.value)
   }
   render() {
     return (
